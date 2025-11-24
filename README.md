@@ -1,11 +1,11 @@
-
 ## Description
 
-This package used to show the terminal widget in your app
+This package is used to show the terminal widget in your app.
 
 ## Getting started
 
-To show terminal in app screen to help you in debugger with any mode - debug / profile / release -
+This package is designed to display a terminal widget directly on the app screen,
+assisting with debugging regardless of the build mode (Debug, Profile, or Release).
 
 ## Usage
 
@@ -20,7 +20,4 @@ Future<void> main() async {
 ```
 
 ## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This package is currently not stable and is not recommended for production use.
