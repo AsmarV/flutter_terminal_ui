@@ -1,7 +1,7 @@
 name: flutter_terminal_ui
 description: "This package used to show the terminal widget in your app"
 version: 0.0.1
-homepage: flutter_terminal_ui
+homepage: https://github.com/AsmarV/flutter_terminal_ui
 
 environment:
   sdk: ^3.9.2

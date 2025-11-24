@@ -25,11 +25,14 @@ start using the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+Future<void> main() async {
+  //Replace with your runApp();
+  runAppWithDebuggingMode(
+    appView: MaterialApp(), //Replace with your MyApp() or any widget uses
+    usingDebugging: true, //By default uses -kDebugMode- if need show it on release mode make it true
+  );
+}
 ```
 
 ## Additional information
