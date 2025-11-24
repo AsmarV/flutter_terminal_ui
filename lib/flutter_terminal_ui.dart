@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-void runAppWithDebuggingMode({required Widget appView, bool usingDebugging = kDebugMode}) {
+void runAppWithDebuggingMode({
+  required Widget appView,
+  bool usingDebugging = kDebugMode,
+}) {
   runZonedGuarded(
     () {
       WidgetsFlutterBinding.ensureInitialized();
@@ -36,12 +39,20 @@ void runAppWithDebuggingMode({required Widget appView, bool usingDebugging = kDe
     zoneSpecification: ZoneSpecification(
       print: (self, parent, zone, line) {
         logsCubit.addLog(
-          LogsHelper(status: LogsStatus.normal, label: line, currentTime: DateTime.now()),
+          LogsHelper(
+            status: LogsStatus.normal,
+            label: line,
+            currentTime: DateTime.now(),
+          ),
         );
       },
     ),
     (error, stack) => logsCubit.addLog(
-      LogsHelper(status: LogsStatus.error, label: '- ERROR - $error', currentTime: DateTime.now()),
+      LogsHelper(
+        status: LogsStatus.error,
+        label: '- ERROR - $error',
+        currentTime: DateTime.now(),
+      ),
     ),
   );
 }
@@ -59,13 +70,15 @@ Widget debuggerView(bool usingDebugging) {
           value: logsCubit,
           child: BlocBuilder<LogsCubit, LogsState>(
             builder: (context, state) {
-              bool hideByKeyboard = MediaQuery.of(context).viewInsets.bottom > 0;
+              bool hideByKeyboard =
+                  MediaQuery.of(context).viewInsets.bottom > 0;
               bool hideByDeveloper = !state.showTerminal;
               if (hideByKeyboard) return SizedBox();
               if (usingDebugging) {
                 if (hideByDeveloper) {
                   return ElevatedButton(
-                    onPressed: () => logsCubit.switchTerminal(!state.showTerminal),
+                    onPressed: () =>
+                        logsCubit.switchTerminal(!state.showTerminal),
                     child: Text("Show Terminal"),
                   );
                 }
@@ -99,7 +112,13 @@ Widget terminalView(LogsState state) {
             end: Alignment.bottomRight,
           ),
           border: Border.all(color: Colors.black87, width: 1.2),
-          boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 12, offset: Offset(0, 6))],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black54,
+              blurRadius: 12,
+              offset: Offset(0, 6),
+            ),
+          ],
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -140,7 +159,9 @@ Widget terminalView(LogsState state) {
                         style: TextStyle(
                           fontSize: 12,
                           fontFamily: 'Courier',
-                          color: log.status == LogsStatus.error ? Colors.redAccent : Colors.white70,
+                          color: log.status == LogsStatus.error
+                              ? Colors.redAccent
+                              : Colors.white70,
                         ),
                       ),
                     ],
@@ -170,13 +191,20 @@ Widget swiper() {
       child: Container(
         height: 5,
         width: 50,
-        decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(16)),
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.circular(16),
+        ),
       ),
     ),
   );
 }
 
-Widget actionButton({required VoidCallback onTap, required Color color, required IconData icon}) {
+Widget actionButton({
+  required VoidCallback onTap,
+  required Color color,
+  required IconData icon,
+}) {
   return GestureDetector(
     onTap: onTap,
     child: CircleAvatar(
@@ -214,9 +242,17 @@ class LogsState extends Equatable {
   final double terminalSize;
   final bool showTerminal;
 
-  const LogsState({required this.logs, required this.terminalSize, this.showTerminal = false});
+  const LogsState({
+    required this.logs,
+    required this.terminalSize,
+    this.showTerminal = false,
+  });
 
-  LogsState copyWith({List<LogsHelper>? logs, double? terminalSize, bool? showTerminal}) {
+  LogsState copyWith({
+    List<LogsHelper>? logs,
+    double? terminalSize,
+    bool? showTerminal,
+  }) {
     return LogsState(
       logs: logs ?? this.logs,
       terminalSize: terminalSize ?? this.terminalSize,
@@ -235,5 +271,9 @@ class LogsHelper {
   final String label;
   final DateTime currentTime;
 
-  LogsHelper({required this.status, required this.label, required this.currentTime});
+  LogsHelper({
+    required this.status,
+    required this.label,
+    required this.currentTime,
+  });
 }
