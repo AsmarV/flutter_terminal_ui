@@ -19,5 +19,7 @@ Future<void> main() async {
 }
 ```
 
+![Example] (assets/example.png)
+
 ## Additional information
 This package is currently not stable and is not recommended for production use.
