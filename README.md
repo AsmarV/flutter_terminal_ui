@@ -19,7 +19,7 @@ Future<void> main() async {
 }
 ```
 
-![Example] (assets/example.png)
+![](../flutter_terminal_ui/assets/example.png)
 
 ## Additional information
 This package is currently not stable and is not recommended for production use.
