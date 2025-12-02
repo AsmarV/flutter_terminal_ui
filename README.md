@@ -19,7 +19,7 @@ Future<void> main() async {
 }
 ```
 
-<img src="assets/example.png" alt="Example"/>
+<img src="assets/example.png" alt="Example" width="200"/>
 
 ## Additional information
 This package is currently not stable and is not recommended for production use.
